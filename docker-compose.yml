@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  jekyll:
+    image: docker-flask
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/src
+    command: /bin/bash
