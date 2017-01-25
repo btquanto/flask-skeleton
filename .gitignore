@@ -1,0 +1,5 @@
+.env/*
+*.pyc
+flaskconfig.py
+scripts/flask.sh
+scripts/gunicorn_config.py

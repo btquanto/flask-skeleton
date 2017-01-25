@@ -1,0 +1,23 @@
+from os.path import abspath, dirname
+
+# Application configuration
+DEBUG = True
+SECRET_KEY = "secret!!!"
+BASE_DIR = abspath(dirname(__file__))
+HOST = "0.0.0.0"
+DOMAIN = "localhost"
+PORT = 8080
+
+# Flask-Session
+SESSION_TYPE = None
+SESSION_PERMANENT = True
+
+# Sql Alchemy
+SQLALCHEMY_DATABASE_URI = "postgres://{dbusername}:{password}@{dbhost}/{dbname}".format(
+    dbusername="dbusername",
+    dbpassword="dbpassword",
+    dbhost="localhost",
+    dbname="dbname")
+
+SQLALCHEMY_POOL_SIZE = 10
+SQLALCHEMY_POOL_TIMEOUT = -1

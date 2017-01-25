@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+bin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+cd "$bin_dir"
+
+. /path/to/virtual/env/folder/bin/activate
+
+exec gunicorn --config ./scripts/gunicorn_config.py -w 1 app:app

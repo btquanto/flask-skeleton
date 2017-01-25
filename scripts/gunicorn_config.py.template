@@ -1,0 +1,6 @@
+bind = 'localhost:8000'
+worker_class = 'eventlet'
+workers = 1
+proc_name = 'process-name'
+accesslog = '/path/to/logs/g_access.log'
+errorlog = '/path/to/logs/g_error.log'
