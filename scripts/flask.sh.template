@@ -6,6 +6,7 @@ bin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 cd "$bin_dir"
 
 source /path/to/virtual/env/folder/bin/activate
+pip install -U pip
 pip install -r requirements.txt
 
 exec gunicorn --config ./scripts/gunicorn_config.py -w 1 app:app

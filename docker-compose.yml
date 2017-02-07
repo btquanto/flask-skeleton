@@ -9,3 +9,4 @@ services:
       - 8000:8000
     volumes:
       - ./:/src
+    command: /bin/bash /src/scripts/flask.sh
