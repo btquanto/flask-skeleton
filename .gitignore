@@ -3,3 +3,4 @@
 flaskconfig.py
 scripts/flask.sh
 scripts/gunicorn_config.py
+logs/*
