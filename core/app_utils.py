@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import eventlet, logging, time, datetime
 from logging.handlers import RotatingFileHandler, SMTPHandler
 from flask import Flask
