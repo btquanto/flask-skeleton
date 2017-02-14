@@ -8,7 +8,7 @@ services:
       - POSTGRES_DB=flask_skeleton
       - POSTGRES_PASSWORD=mysecretpassword
   flask:
-    image: btquanto/docker-flask
+    image: btquanto/docker-flask-py3
     environment:
       - GUNICORN_CONFIG_FILE=scripts/gunicorn_config.py
     ports:
@@ -17,4 +17,4 @@ services:
       - ./:/src
     links:
       - postgres
-    # command: /bin/bash /src/scripts/flask.sh
+    # command: /bin/bash -lc "/src/scripts/flask.sh"
