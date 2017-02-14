@@ -52,12 +52,10 @@ def initialize_plugins(app):
     login_manager.user_loader(load_user)
 
     # RBAC
-    from .access import get_current_user
     from models import User, Role
     rbac.init_app(app)
     rbac.role_model(Role)
     rbac.user_model(User)
-    # rbac.current_user_loader(get_current_user)
 
     # Flask-Session
     session.init_app(app)
