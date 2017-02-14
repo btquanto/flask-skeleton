@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from flask import redirect, url_for
 from core import create_application
 

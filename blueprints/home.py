@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Blueprint, render_template, current_app as app, jsonify, request
 from jinja2 import TemplateNotFound
 

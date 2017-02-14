@@ -1,2 +1,8 @@
-from app_utils import create_application, db
-
+# -*- coding: utf-8 -*-
+from core.application import (
+    create_application,
+    db,
+    login_manager,
+    rbac,
+    session,
+)

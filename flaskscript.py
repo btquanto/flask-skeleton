@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+#!/usr/bin/bash
 from flask import Flask
-from flask.ext.script import Manager, prompt_bool
-from flask.ext.migrate import Migrate, MigrateCommand
+from flask_script import Manager, prompt_bool
+from flask_migrate import Migrate, MigrateCommand
 
 from core import create_application, db
 

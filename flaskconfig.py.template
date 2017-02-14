@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os.path import abspath, dirname
 
 # Application configuration
@@ -6,18 +7,40 @@ SECRET_KEY = "secret!!!"
 BASE_DIR = abspath(dirname(__file__))
 HOST = "0.0.0.0"
 DOMAIN = "localhost"
-PORT = 8080
+PORT = 8000
 
 # Flask-Session
 SESSION_TYPE = None
 SESSION_PERMANENT = True
 
 # Sql Alchemy
-SQLALCHEMY_DATABASE_URI = "postgres://{dbusername}:{password}@{dbhost}/{dbname}".format(
-    dbusername="dbusername",
-    dbpassword="dbpassword",
-    dbhost="localhost",
-    dbname="dbname")
+SQLALCHEMY_DATABASE_URI = "postgres://{dbusername}:{dbpassword}@{dbhost}/{dbname}".format(
+    dbusername="postgres",
+    dbpassword="mysecretpassword",
+    dbhost="postgres",
+    dbname="postgres")
 
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_POOL_SIZE = 10
 SQLALCHEMY_POOL_TIMEOUT = -1
+
+# Role-based access control
+RBAC_DENY_ALL_BY_DEFAULT = False
+
+# Logging
+LOG_FORMAT = "[%(levelname)s](%(asctime)s): %(message)s \n[%(pathname)s:%(lineno)d -- %(module)s.%(funcName)s]"
+LOG_FORMAT_DEBUG = LOG_FORMAT
+LOG_FORMAT_ERROR = LOG_FORMAT
+LOG_FORMAT_INFO = "[%(levelname)s](%(asctime)s): %(message)s"
+
+MAX_LOG_FILE_SIZE = 1048576 # bytes
+LOG_BACKUP_COUNT = 50
+
+DEBUG_LOG_FILE = 'logs/flask.debug.log'
+ERROR_LOG_FILE = 'logs/flask.error.log'
+INFO_LOG_FILE = 'logs/flask.info.log'
+
+# Error reporting
+ERROR_REPORT_TITLE = "Server Error"
+ERROR_REPORT_FROM_EMAIL = "server-error@example.com"
+ERROR_REPORT_TO_EMAILS = ["admin@example.com"]
