@@ -1,6 +1,12 @@
 version: '2'
 
 services:
+  # Data volume
+  data:
+    image: alpine:3.5
+    volumes:
+      - ./:/src
+    command: /bin/sh
   postgres:
     image: postgres:9.6.1-alpine
     environment:
@@ -8,13 +14,13 @@ services:
       - POSTGRES_DB=flask_skeleton
       - POSTGRES_PASSWORD=mysecretpassword
   flask:
-    image: btquanto/docker-flask-py3
+    image: docker-flask-uwsgi-py3
     environment:
-      - GUNICORN_CONFIG_FILE=scripts/gunicorn_config.py
+      - UWSGI_CONFIG_FILE=uwsgi_config.ini
     ports:
       - 8000:8000
-    volumes:
-      - ./:/src
+    volumes_from:
+      - data
     links:
       - postgres
     # command: /bin/bash -lc "/src/scripts/flask.sh"

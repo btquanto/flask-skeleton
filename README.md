@@ -81,4 +81,8 @@ First, make sure that you have created a logs
 
 2. Configuring flask:
 
+    ```
+    cp flaskconfig.py.template flaskconfig.py
+    ```
+
     Edit `flaskconfig.py` as fit

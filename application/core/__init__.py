@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from core.application import (
+from .application import (
     create_application,
     db,
     login_manager,

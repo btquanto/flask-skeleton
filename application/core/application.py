@@ -16,7 +16,7 @@ from flask_sqlalchemy import SQLAlchemy
 from .access import RBAC
 
 # Constants
-CONFIGURATION_FILE = "flaskconfig.py"
+CONFIGURATION_FILE = "config/flaskconfig.py"
 
 # Allow server-side session
 db = SQLAlchemy()
@@ -35,7 +35,7 @@ def create_application(__package_name__):
     initialize_logger(app, __package_name__)
 
     # Register blueprints
-    from blueprints import home
+    from ..blueprints import home
     app.register_blueprint(home.node, url_prefix="/home")
 
     return app
@@ -52,7 +52,7 @@ def initialize_plugins(app):
     login_manager.user_loader(load_user)
 
     # RBAC
-    from models import User, Role
+    from ..models import User, Role
     rbac.init_app(app)
     rbac.role_model(Role)
     rbac.user_model(User)

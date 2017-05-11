@@ -1,0 +1,4 @@
+[uwsgi]
+http = :8000
+module = application:app
+manage-script-name = true
