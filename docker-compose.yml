@@ -14,7 +14,7 @@ services:
       - POSTGRES_DB=flask_skeleton
       - POSTGRES_PASSWORD=mysecretpassword
   flask:
-    image: docker-flask-uwsgi-py3
+    image: btquanto/docker-flask-py3:latest
     environment:
       - UWSGI_CONFIG_FILE=uwsgi_config.ini
     ports:

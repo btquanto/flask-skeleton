@@ -2,11 +2,17 @@
 
 set -e
 
-bin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
-cd "$bin_dir"
+cd /src
 
-source /path/to/virtual/env/folder/bin/activate
-pip install -U pip
-pip install -r requirements.txt
+if [ -f requirements.txt ]
+then
+    echo "Checking for package updates...";
+    pip install -Ur requirements.txt;
+fi;
 
-exec gunicorn --config ./scripts/gunicorn_config.py -w 1 app:app
+if [ "uwsgi_config.ini" ]
+then
+    exec uwsgi --ini uwsgi_config.ini
+else
+    exec uwsgi --http 0.0.0.0:8000 -w application:app
+fi;

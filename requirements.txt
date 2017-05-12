@@ -14,3 +14,4 @@ python-dateutil==2.6.0
 pytz==2017.2
 simplejson==3.10.0
 sqlalchemy==1.1.9
+uwsgi==2.0.15
