@@ -1,12 +1,6 @@
-version: '2'
+version: '3'
 
 services:
-  # Data volume
-  data:
-    image: alpine:3.5
-    volumes:
-      - ./:/src
-    command: /bin/sh
   postgres:
     image: postgres:9.6.1-alpine
     environment:
@@ -17,10 +11,25 @@ services:
     image: btquanto/docker-flask-py3:latest
     environment:
       - UWSGI_CONFIG_FILE=uwsgi_config.ini
-    ports:
-      - 8000:8000
-    volumes_from:
-      - data
     links:
       - postgres
+    volumes:
+      - flask_data:/src
+      - flask_data:/tmp/
     # command: /bin/bash -lc "/src/scripts/flask.sh"
+  nginx:
+    image: nginx:1.13.0-alpine
+    ports:
+      - 8000:8080
+    depends_on:
+      - flask
+    volumes:
+      - ./scripts/nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
+      - flask_data:/tmp/
+      - flask_data:/src
+
+    command: ["nginx", "-g", "daemon off;"]
+
+volumes:
+  flask_data:
+    - ./:/src
