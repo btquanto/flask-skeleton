@@ -1,5 +1,8 @@
 version: '3'
 
+volumes:
+  flask_data:
+
 services:
   postgres:
     image: postgres:9.6.1-alpine
@@ -14,7 +17,7 @@ services:
     links:
       - postgres
     volumes:
-      - flask_data:/src
+      - ./:/src
       - flask_data:/tmp/
     # command: /bin/bash -lc "/src/scripts/flask.sh"
   nginx:
@@ -24,12 +27,8 @@ services:
     depends_on:
       - flask
     volumes:
+      - ./:/src
       - ./scripts/nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
       - flask_data:/tmp/
-      - flask_data:/src
 
     command: ["nginx", "-g", "daemon off;"]
-
-volumes:
-  flask_data:
-    - ./:/src
